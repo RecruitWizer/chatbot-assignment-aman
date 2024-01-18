@@ -1,0 +1,3 @@
+create new session/chat feature
+left bar - show past 7 days sessions/chat - cache into reddis
+llama_index integration
