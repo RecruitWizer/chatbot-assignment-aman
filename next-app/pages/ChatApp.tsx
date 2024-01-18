@@ -17,6 +17,13 @@ const ChatApp: React.FC = () => {
   const [selectedChatId, setSelectedChatId] = React.useState<number | undefined>(1);
   // const { selectedChatId } = router.
 
+  React.useEffect(() => {
+    // Fetch chat data based on the selected chatId
+    // You can make an API call to get chat history or perform any necessary logic here
+    console.log(`Fetching chat data for chatId: ${selectedChatId}`);
+  }, [selectedChatId]);
+
+
   const handleSelectChat = (chatId: number) => {
     router.push(`/chat?chatId=${chatId}`);
 

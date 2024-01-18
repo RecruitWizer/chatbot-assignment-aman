@@ -46,12 +46,20 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
   // }
 
   useEffect(() => {
+    const fetchChatHistory = async () => {
+      console.log(selectedChatId);
+      setChatHistory([]);
+    };
+    if (selectedChatId !== undefined) {
+      fetchChatHistory();
+    }
+    
     // Scroll to the bottom of the chat history whenever it updates
     const chatContainer = document.getElementById('chat-container');
     if (chatContainer) {
       chatContainer.scrollTop = chatContainer.scrollHeight;
     }
-  }, [chatHistory]);
+  }, [ selectedChatId]);
 
   return (
     <div className="flex-grow flex flex-col p-4">
