@@ -11,7 +11,7 @@ sys.path.append(".")
 load_dotenv()
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
-# print(OPENAI_API_KEY)
+print(OPENAI_API_KEY)
 if OPENAI_API_KEY is None:
     raise EnvironmentError("OpenAI API key not found. Make sure it is set in the .env file.")
 
@@ -46,7 +46,9 @@ async def get_chatbot_response(user_input: str):
 
     chatbot_response = response.choices[0]["text"]
 
-    async def generate():
-        yield f"data: {chatbot_response}\n\n"
+    return {"response": chatbot_response}
 
-    return StreamingResponse(generate(), media_type="text/event-stream")
+    # async def generate():
+    #     yield f"data: {chatbot_response}\n\n"
+
+    # return StreamingResponse(generate(), media_type="text/plain")
