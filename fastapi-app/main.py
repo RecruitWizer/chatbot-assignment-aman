@@ -4,8 +4,8 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 import openai
-# from openai.openai_client import OPENAI_API_KEY
 import sys, os
+
 sys.path.append(".")
 
 load_dotenv()
@@ -33,7 +33,7 @@ def read_root():
     return {"message": "Hello, FastAPI!"}
 
 @app.get("/api/chatbot/{user_input}")
-def get_chatbot_response(user_input: str):
+async def get_chatbot_response(user_input: str):
     if not user_input:
         raise HTTPException(status_code=400, detail="User input cannot be empty.")
 
@@ -46,6 +46,7 @@ def get_chatbot_response(user_input: str):
 
     chatbot_response = response.choices[0]["text"]
 
-    return {"response": chatbot_response}
+    async def generate():
+        yield f"data: {chatbot_response}\n\n"
 
-
+    return StreamingResponse(generate(), media_type="text/event-stream")
