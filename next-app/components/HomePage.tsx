@@ -3,6 +3,7 @@
 
 import { useState, useEffect } from 'react';
 import React from 'react';
+import { addChat, getChat } from '../app/actions/create.js';
 
 interface HomePageProps {
   selectedChatId?: number;
@@ -11,6 +12,7 @@ interface HomePageProps {
 interface Message {
   input: string;
   response: string;
+  timestamp: number;
 }
 
 const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
@@ -27,9 +29,14 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
       // Send user input to the FastAPI endpoint
       const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`);
       const data = await response.json();
+      console.log(response);
 
       // Update chat history with the chatbot response
-      setChatHistory([...chatHistory, { input: userInput, response: data.response }]);
+      const newMessage = {input: userInput, response: data.response, timestamp: Date.now()}
+      setChatHistory([...chatHistory, newMessage]);
+
+      // Save the new message to Redis
+      await addChat(selectedChatId, newMessage);
 
       // Clear user input
       setUserInput('');
@@ -47,12 +54,17 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
 
   useEffect(() => {
     const fetchChatHistory = async () => {
-      console.log(selectedChatId);
-      setChatHistory([]);
+      if (selectedChatId !== undefined) {
+        try {
+          const fetchedChatHistory = await getChat(selectedChatId);
+          setChatHistory(fetchedChatHistory || []);
+        } catch (error) {
+          console.error('Error fetching chat history from Redis:', error);
+        }
+      }
     };
-    if (selectedChatId !== undefined) {
-      fetchChatHistory();
-    }
+    
+    fetchChatHistory();
     
     // Scroll to the bottom of the chat history whenever it updates
     const chatContainer = document.getElementById('chat-container');

@@ -4,6 +4,8 @@ import React from 'react';
 import { useRouter } from 'next/navigation';
 import HomePage from '../components/HomePage';
 import LeftPanel from '../components/LeftPanel';
+import { getChatIds, addChatId } from '../app/actions/create.js';
+
 
 const ChatApp: React.FC = () => {
 
@@ -18,10 +20,13 @@ const ChatApp: React.FC = () => {
   // const { selectedChatId } = router.
 
   React.useEffect(() => {
-    // Fetch chat data based on the selected chatId
-    // You can make an API call to get chat history or perform any necessary logic here
-    console.log(`Fetching chat data for chatId: ${selectedChatId}`);
-  }, [selectedChatId]);
+    const fetchChatIds = async () => {
+      const chatIds = await getChatIds();
+      setChats(chatIds.map((id: number) => ({ id, name: `Chat ${id}` })));
+    };
+
+    fetchChatIds();
+  }, []);
 
 
   const handleSelectChat = (chatId: number) => {
@@ -32,9 +37,11 @@ const ChatApp: React.FC = () => {
     // You can fetch chat data or update the chat content here
   };
 
-  const handleCreateNewChat = () => {
+  const handleCreateNewChat = async () => {
     // Generate a random ID for the new chat
     const newChatId = Math.floor(Math.random() * 1000000);
+
+    await addChatId(newChatId);
     
     // Create a new chat object
     const newChat = { id: newChatId, name: `Chat ${newChatId}` };
