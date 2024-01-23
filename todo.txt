@@ -1,4 +1,4 @@
-create new session/chat feature
-left bar - show past 7 days sessions/chat - cache into reddis
+
+left bar - show past 7 days sessions/chat 
 llama_index integration
 chat name based on first prompt

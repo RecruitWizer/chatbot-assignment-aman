@@ -29,7 +29,23 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
       // Send user input to the FastAPI endpoint
       const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`);
       const data = await response.json();
-      console.log(response);
+      // console.log(response);
+
+      // const reader = response.body!.getReader();
+
+      // let data: string = '';
+
+      // while (true) {
+      //   const { done, value } = await reader.read();
+      //   console.log(value?.toString());
+
+      //   if (done) {
+      //     break;
+      //   }
+
+      //   data += value;
+      // }
+      // const newMessage = {input: userInput, response: data, timestamp: Date.now()}
 
       // Update chat history with the chatbot response
       const newMessage = {input: userInput, response: data.response, timestamp: Date.now()}

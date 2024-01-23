@@ -79,9 +79,7 @@ def read_root():
 async def astreamer(generator):
     try:
         for i in generator:
-            # yield f"response: {i}"
-            json_response = json.dumps({"response": i})
-            yield f"data: {json_response}\n\n"
+            yield f"data: {i}\n\n"
             await asyncio.sleep(.1)
     except asyncio.CancelledError as e:
         print('cancelled')
@@ -101,9 +99,6 @@ async def get_chatbot_response(user_input: str):
     chatbot_response = response.choices[0]["text"]
     
     return {"response": chatbot_response}
-
-    # async def generate():
-    #     yield f"response: {chatbot_response}\n\n"
 
     # return StreamingResponse(astreamer([chatbot_response]), media_type="text/plain")
     # return StreamingResponse(astreamer(response.response_ms), media_type="text/plain")
