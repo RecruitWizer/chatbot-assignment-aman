@@ -23,13 +23,15 @@ export async function addChatId(chatId) {
 export async function addChat(chatId, message) {
     try {
         // Fetch the existing chat history from Redis
-        const existingChatHistory = await getChat(chatId);
+        // const existingChatHistory = await getChat(chatId);
 
-        // Add the new message to the chat history
-        const updatedChatHistory = [...existingChatHistory, message];
+        // // Add the new message to the chat history
+        // const updatedChatHistory = [...existingChatHistory, message];
 
-        // Save the updated chat history back to Redis
-        await client.set(`chat:${chatId}`, JSON.stringify(updatedChatHistory));
+        // // Save the updated chat history back to Redis
+        // await client.set(`chat:${chatId}`, JSON.stringify(updatedChatHistory));
+
+        await client.RPUSH(`chat:${chatId}`, JSON.stringify(message));
 
         return { success: true, message: "Message added to chat history" };
     } catch (error) {
@@ -42,10 +44,15 @@ export async function addChat(chatId, message) {
 export async function getChat(chatId) {
     try {
         // Retrieve the chat history from Redis
-        const chatHistoryString = await client.get(`chat:${chatId}`);
-        const chatHistory = JSON.parse(chatHistoryString) || [];
+        // const chatHistoryString = await client.get(`chat:${chatId}`);
+        // const chatHistory = JSON.parse(chatHistoryString) || [];
 
-        return chatHistory;
+        // return chatHistory;
+
+        const chatListString = await client.LRANGE(`chat:${chatId}`, 0, -1);
+        const chatList = chatListString.map(JSON.parse);
+        
+        return chatList;
     } catch (error) {
         console.error("Error fetching chat history from Redis:", error);
         return [];
