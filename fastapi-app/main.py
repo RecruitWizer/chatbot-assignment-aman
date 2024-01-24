@@ -98,7 +98,7 @@ async def get_chatbot_response(user_input: str):
     )
     chatbot_response = response.choices[0]["text"]
     
-    return {"response": chatbot_response}
+    # return {"response": chatbot_response}
 
-    # return StreamingResponse(astreamer([chatbot_response]), media_type="text/plain")
+    return StreamingResponse(astreamer([chatbot_response]), media_type="text/plain")
     # return StreamingResponse(astreamer(response.response_ms), media_type="text/plain")
