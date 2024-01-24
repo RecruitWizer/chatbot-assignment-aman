@@ -4,6 +4,8 @@
 import { useState, useEffect } from 'react';
 import React from 'react';
 import { addChat, getChat } from '../app/actions/create.js';
+import { useChat } from "ai/react";
+// import { ChatInput, ChatMessages } from "./ui/chat";
 
 interface HomePageProps {
   selectedChatId?: number;

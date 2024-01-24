@@ -15,7 +15,7 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedChatId, onSelectChat, onC
   return (
     <div className="flex flex-col h-screen dark:bg-dark bg-white">
       <div className="bg-gray-200 p-4 flex flex-col flex-grow overflow-y-auto">
-        <button onClick={onCreateNewChat} className="p-2 bg-green-500 text-white rounded">
+        <button onClick={onCreateNewChat} className="p-2 bg-green-500 dark:text-black text-white rounded">
           Create New Chat
         </button>
         <br />
@@ -25,7 +25,7 @@ const LeftPanel: React.FC<LeftPanelProps> = ({ selectedChatId, onSelectChat, onC
             <li
               key={chat.id}
               onClick={() => onSelectChat(chat.id)}
-              className={`cursor-pointer ${selectedChatId === chat.id ? 'font-bold text-black' : ''}`}
+              className={`cursor-pointer ${selectedChatId === chat.id ? 'font-bold dark:text-white text-black' : ''}`}
             >
               {chat.name}
             </li>
