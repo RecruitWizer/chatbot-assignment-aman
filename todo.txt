@@ -1,4 +1,6 @@
 
 left bar - show past 7 days sessions/chat 
-llama_index integration
+llama_index fix
 chat name based on first prompt
+
+css - create a theme dark/light by a button

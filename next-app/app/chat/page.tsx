@@ -12,7 +12,7 @@ export default function Admin() {
 
   return (
     <div>
-      <ChatApp />
+      <ChatApp/>
     </div>
   );
 }

@@ -90,20 +90,21 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
   }, [ selectedChatId]);
 
   return (
-    <div className="flex-grow flex flex-col p-4">
+    <div className="flex-grow flex flex-col p-4 dark:bg-dark bg-white">
       <div className="flex-grow overflow-y-auto p-4 border rounded" id="chat-container">
         {chatHistory.map((message, index) => (
           <div key={index} className="mb-2">
             <div
-              className={`p-2 rounded ${'bg-green-200 self-start text-black'
+              className={`p-2 rounded ${'bg-green-200 self-start dark:text-medium text-black'
                 }`}
             >
               {message.input}
             </div>
             <div
-              className={`p-2 rounded ${'bg-blue-300 self-end text-black'
+              className={`p-2 rounded ${'bg-blue-300 self-end dark:text-medium text-black'
                 }`}
             >
+            {/* <pre>{message.response}</pre> */}
               {message.response}
             </div>
             <br></br>
@@ -116,9 +117,9 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
           placeholder="Type your message..."
           value={userInput}
           onChange={handleUserInput}
-          className="flex-grow p-2 border rounded mr-2 text-black"
+          className="flex-grow p-2 border rounded mr-2 dark:text-white text-black dark:bg-dark bg-white"
         />
-        <button onClick={handleUserSubmit} className="p-2 bg-green-500 text-white rounded">
+        <button onClick={handleUserSubmit} className="p-2 bg-green-500 dark:text-black text-white rounded">
           Send
         </button>
       </div>
