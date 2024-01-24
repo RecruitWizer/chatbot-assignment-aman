@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import HomePage from '../components/HomePage';
 import LeftPanel from '../components/LeftPanel';
 import { getChatIds, addChatId } from '../app/actions/create.js';
+import AlternatePage from '@/components/AlternatePage';
 
 
 const ChatApp: React.FC = () => {
@@ -60,7 +61,8 @@ const ChatApp: React.FC = () => {
       <LeftPanel selectedChatId={Number(selectedChatId)} onSelectChat={handleSelectChat} onCreateNewChat={handleCreateNewChat} chats={chats} />
 
       {/* Chat Container */}
-      <HomePage selectedChatId={Number(selectedChatId)} />
+      <AlternatePage />
+      {/* <HomePage selectedChatId={Number(selectedChatId)} /> */}
     </div>
   );
 };

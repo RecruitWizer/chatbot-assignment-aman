@@ -4,7 +4,9 @@
 import { useChat } from 'ai/react';
 
 export default function Chat() {
-  const { messages, input, handleInputChange, handleSubmit } = useChat();
+  const { messages, input, handleInputChange, handleSubmit } = useChat({
+    api: 'http://localhost:8000/api/chatbot'
+  });
 
   return (
     <div>

@@ -85,7 +85,7 @@ async def astreamer(generator):
         print('cancelled')
 
 
-@app.get("/api/chatbot/{user_input}")
+@app.get("/api/chatbot")
 async def get_chatbot_response(user_input: str):
     if not user_input:
         raise HTTPException(status_code=400, detail="User input cannot be empty.")
