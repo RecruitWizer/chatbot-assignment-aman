@@ -61,8 +61,8 @@ const ChatApp: React.FC = () => {
       <LeftPanel selectedChatId={Number(selectedChatId)} onSelectChat={handleSelectChat} onCreateNewChat={handleCreateNewChat} chats={chats} />
 
       {/* Chat Container */}
-      <AlternatePage />
-      {/* <HomePage selectedChatId={Number(selectedChatId)} /> */}
+      {/* <AlternatePage /> */}
+      <HomePage selectedChatId={Number(selectedChatId)} />
     </div>
   );
 };

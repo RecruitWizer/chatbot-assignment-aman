@@ -20,6 +20,7 @@ interface Message {
 const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
   const [userInput, setUserInput] = useState<string>('');
   const [chatHistory, setChatHistory] = useState<Message[]>([]);
+  const [responses, setResponses] = useState<string[]>([]);
   // const [selectedChatId, setSelectedChatId] = useState<number | undefined>(1);
 
   const handleUserInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -29,8 +30,8 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
   const handleUserSubmit = async () => {
     if (userInput.trim() !== '') {
       // Send user input to the FastAPI endpoint
-      const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`);
-      const data = await response.json();
+      // const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`);
+      // const data = await response.json();
       // console.log(response);
 
       // const reader = response.body!.getReader();
@@ -48,9 +49,42 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
       //   data += value;
       // }
       // const newMessage = {input: userInput, response: data, timestamp: Date.now()}
+      const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`, {
+        method: 'GET',
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch data');
+      }
+
+      const reader = response.body?.getReader();
+
+      if (!reader) {
+        throw new Error('Failed to get response reader');
+      }
+
+      let result = '';
+
+      const read = async () => {
+        const { done, value } = await reader?.read();
+
+        if (done) {
+          return;
+        }
+        // console.log(new TextDecoder().decode(value));
+        const temp = new TextDecoder().decode(value);
+        
+        result = result + temp;
+        // Continue reading the stream
+        read();
+      };
+
+      // Start reading the stream
+      await read();
 
       // Update chat history with the chatbot response
-      const newMessage = {input: userInput, response: data.response, timestamp: Date.now()}
+      const newMessage = {input: userInput, response: result, timestamp: Date.now()}
+      // const newMessage = {input: userInput, response: data.response, timestamp: Date.now()}
       setChatHistory([...chatHistory, newMessage]);
 
       // Save the new message to Redis
