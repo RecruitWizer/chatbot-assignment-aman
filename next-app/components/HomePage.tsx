@@ -76,7 +76,7 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
         
         result = result + temp;
         // Continue reading the stream
-        read();
+        await read();
       };
 
       // Start reading the stream
