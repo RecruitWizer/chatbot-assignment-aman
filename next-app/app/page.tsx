@@ -2,6 +2,7 @@
 
 import { redirect } from 'next/navigation';
 import { useSession } from 'next-auth/react';
+import Nav from '@/components/Nav';
 
 export default function Home() {
 

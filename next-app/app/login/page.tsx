@@ -3,6 +3,7 @@
 import type { NextRequest } from "next/server";
 import { signIn, useSession } from "next-auth/react";
 import { redirect } from "next/navigation";
+import Nav from "@/components/Nav";
 
 export default function Login() {
   const { data: session } = useSession();
@@ -11,6 +12,10 @@ export default function Login() {
   }
 
   return (
+    <div>
+      <div>
+        <Nav />
+      </div>
       <div className="flex items-center justify-center h-screen">
         <div className="text-center">
           <h1 className="text-2xl font-bold mb-4">Login Page</h1>
@@ -19,5 +24,6 @@ export default function Login() {
           </button>
         </div>
       </div>
+    </div>
   );
 }
