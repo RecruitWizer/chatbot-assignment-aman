@@ -22,7 +22,7 @@ export default function Nav() {
                         Hi
                     </li>
                     <Drawer>
-                        <DrawerTrigger className="text-2xl font-bold mb-4">Open</DrawerTrigger>
+                        <DrawerTrigger className="p-3 bg-green-500 text-white rounded">Open</DrawerTrigger>
                         <DrawerContent>
                             <DrawerHeader>
                                 <DrawerTitle>Are you absolutely sure?</DrawerTitle>
