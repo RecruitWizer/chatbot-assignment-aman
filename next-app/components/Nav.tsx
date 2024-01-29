@@ -11,6 +11,7 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
+import { ModeToggle } from "./ui/toggle-mode"
 
 
 export default function Nav() {
@@ -18,9 +19,10 @@ export default function Nav() {
         <header>
             <nav>
                 <ul className="flex items-center justify-between">
-                    <li className="text-2xl font-bold mb-4">
-                        Hi
+                    <li>
+                        <ModeToggle />
                     </li>
+                    <li>
                     <Drawer>
                         <DrawerTrigger className="p-3 bg-green-500 text-white rounded">Open</DrawerTrigger>
                         <DrawerContent>
@@ -36,7 +38,7 @@ export default function Nav() {
                             </DrawerFooter>
                         </DrawerContent>
                     </Drawer>
-
+                    </li>
                     <li>
                         <Avatar>
                             <AvatarImage src="https://github.com/shadcn.png" />

@@ -33,22 +33,7 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
       // const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`);
       // const data = await response.json();
       // console.log(response);
-
-      // const reader = response.body!.getReader();
-
-      // let data: string = '';
-
-      // while (true) {
-      //   const { done, value } = await reader.read();
-      //   console.log(value?.toString());
-
-      //   if (done) {
-      //     break;
-      //   }
-
-      //   data += value;
-      // }
-      // const newMessage = {input: userInput, response: data, timestamp: Date.now()}
+      
       const response = await fetch(`http://localhost:8000/api/chatbot/${encodeURIComponent(userInput)}`, {
         method: 'GET',
       });
@@ -126,7 +111,7 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
   }, [ selectedChatId]);
 
   return (
-    <div className="flex-grow flex flex-col p-4 dark:bg-dark bg-white">
+    <div className="flex-grow flex flex-col p-4">
       <div className="flex-grow overflow-y-auto p-4 border rounded" id="chat-container">
         {chatHistory.map((message, index) => (
           <div key={index} className="mb-2">
@@ -153,7 +138,7 @@ const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
           placeholder="Type your message..."
           value={userInput}
           onChange={handleUserInput}
-          className="flex-grow p-2 border rounded mr-2 dark:text-white text-black dark:bg-dark bg-white"
+          className="flex-grow p-2 border rounded mr-2 dark:text-white text-black"
         />
         <button onClick={handleUserSubmit} className="p-2 bg-green-500 dark:text-black text-white rounded">
           Send
