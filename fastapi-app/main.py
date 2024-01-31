@@ -1,6 +1,6 @@
 # fastapi-app/main.py
 from dotenv import load_dotenv
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 from llama_index import GPTVectorStoreIndex, SimpleDirectoryReader, ServiceContext, LLMPredictor, PromptHelper
@@ -8,6 +8,7 @@ import asyncio
 from pydantic import BaseModel
 import openai
 import sys, os, json
+from middleware.auth import require_auth
 
 sys.path.append(".")
 
@@ -85,6 +86,7 @@ async def astreamer(generator):
         print('cancelled')
 
 
+# @app.get("/api/chatbot/{user_input}",  dependencies=[Depends(require_auth)])
 @app.get("/api/chatbot/{user_input}")
 async def get_chatbot_response(user_input: str):
     if not user_input:

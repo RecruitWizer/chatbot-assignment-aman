@@ -13,8 +13,7 @@ const ChatApp: React.FC = () => {
   const router = useRouter();
 
   const [chats, setChats] = React.useState<{ id: number; name: string }[]>([
-    { id: 1, name: 'Chat 1' },
-    { id: 2, name: 'Chat 2' },
+    
   ]);
 
   const [selectedChatId, setSelectedChatId] = React.useState<number | undefined>(1);

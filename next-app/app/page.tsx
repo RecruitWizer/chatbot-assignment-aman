@@ -6,14 +6,14 @@ import Nav from '@/components/Nav';
 
 export default function Home() {
 
-  const { data: session } = useSession();
-  if (session) {
-    redirect("/chat");
-  }
+  // const { data: session } = useSession();
+  // if (session) {
+  //   redirect("/chat");
+  // }
 
-  if (session === null) {
-    redirect("/login");
-  }
+  // if (session === null) {
+  //   redirect("/login");
+  // }
   
   return (
     <main>

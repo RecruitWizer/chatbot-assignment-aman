@@ -3,8 +3,10 @@
 
 import { useState, useEffect } from 'react';
 import React from 'react';
+import { useSession, signIn } from 'next-auth/react';
 import { addChat, getChat } from '../app/actions/create.js';
 import { useChat } from "ai/react";
+import { redirect } from 'next/navigation';
 // import { ChatInput, ChatMessages } from "./ui/chat";
 
 interface HomePageProps {
@@ -18,6 +20,11 @@ interface Message {
 }
 
 const HomePage: React.FC<HomePageProps> = ({ selectedChatId }) => {
+  // const { data: session } = useSession();
+  // if (session === null) {
+  //   redirect("/login");
+  // }
+  
   const [userInput, setUserInput] = useState<string>('');
   const [chatHistory, setChatHistory] = useState<Message[]>([]);
   const [responses, setResponses] = useState<string[]>([]);
