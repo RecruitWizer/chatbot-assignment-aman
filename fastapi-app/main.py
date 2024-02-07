@@ -8,7 +8,6 @@ import asyncio
 from pydantic import BaseModel
 import openai
 import sys, os, json
-from middleware.auth import require_auth
 
 sys.path.append(".")
 
