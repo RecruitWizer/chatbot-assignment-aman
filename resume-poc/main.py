@@ -15,13 +15,14 @@ def extract_text_from_pdf(pdf_path):
             text += page.extract_text()
     return text
 
-pdf_path = "resumes/MuskanTolani.pdf"
+pdf_path = "resumes/Aman_Adatia_SDE_Resume.pdf"
 
 resume_text = extract_text_from_pdf(pdf_path)
 
 prompt_template_str = (
     "Please extract the following query into a structured data according"
-    f" to: {resume_text}. Please extract the name, education, experience (if any), projects (if any) and skills (if any) of the candidate."
+    f" to: {resume_text}. Please extract experience (if any) with work details of each experience of the candidate."
+    # f" to: {resume_text}. Please extract the name, education, experience (if any) with work details of each experience, projects (if any) with project details (work done) and skills (if any) of the candidate with all associated details."
 )
 
 
