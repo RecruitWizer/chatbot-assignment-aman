@@ -1,0 +1,14 @@
+[{
+  "_id": {
+    "$oid": "65c7835300530d178f6961ea"
+  },
+  "Name": "Google",
+  "LinkedIn": "https://in.linkedin.com/company/google"
+},
+{
+  "_id": {
+    "$oid": "65c783af00530d178f6961eb"
+  },
+  "Name": "Apple",
+  "LinkedIn": "https://in.linkedin.com/company/apple"
+}]

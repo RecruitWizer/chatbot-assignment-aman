@@ -1,0 +1,9 @@
+[{
+  "_id": {
+    "$oid": "65c788ee00530d178f6961f2"
+  },
+  "Candidate ID": "65c7853100530d178f6961f1",
+  "Job ID": "65c7853100530d178f6961f0",
+  "Bookmark": true,
+  "Email": "dear candidate,\nemail content\nthank you"
+}]

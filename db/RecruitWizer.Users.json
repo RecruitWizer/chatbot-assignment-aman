@@ -1,0 +1,12 @@
+[{
+  "_id": {
+    "$oid": "65c7821c00530d178f6961e9"
+  },
+  "Email": "aman@gmail.com",
+  "Agency": "XYZ Solutions",
+  "Company": [
+    "Google",
+    "Apple"
+  ],
+  "Plan ID": "Free"
+}]

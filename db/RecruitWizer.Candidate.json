@@ -1,0 +1,31 @@
+[{
+  "_id": {
+    "$oid": "65c7876100530d178f6961f1"
+  },
+  "Name": "Anil",
+  "Contact": "9999988888",
+  "Email": "anil@gmail.com",
+  "Domain": "Software",
+  "Location": "Bangalore",
+  "Experience": "4 years",
+  "Companies": [
+    {
+      "Company": "Apple",
+      "Experience": "4 years",
+      "Job Summary": "Worked on iOS team",
+      "Skills": [
+        "Java",
+        "C++"
+      ]
+    }
+  ],
+  "Education": [
+    {
+      "Institute": "IIT Ropar",
+      "Grade": 9.1,
+      "Year": "2020-2024",
+      "Degree": "B.Tech CSE"
+    }
+  ],
+  "Resume": "link_to_resume"
+}]

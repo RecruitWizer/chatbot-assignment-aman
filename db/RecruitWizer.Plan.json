@@ -1,0 +1,46 @@
+[{
+  "_id": {
+    "$oid": "65c783ee00530d178f6961ec"
+  },
+  "Type": "Free",
+  "Amount": 0,
+  "Features": [
+    "1 user access",
+    "1 job project",
+    "3 query searches",
+    "10 profile per search",
+    "5 contact credits"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65c7845000530d178f6961ee"
+  },
+  "Type": "Pro",
+  "Amount": 99,
+  "Features": [
+    "1 user access",
+    "1 job project",
+    "3 query searches",
+    "50 profile per search",
+    "100 contact credits",
+    "Email sequences",
+    "AI email writer"
+  ]
+},
+{
+  "_id": {
+    "$oid": "65c784bc00530d178f6961ef"
+  },
+  "Type": "Enterprise",
+  "Amount": 499,
+  "Features": [
+    "Custom user access",
+    "Unlimited job project",
+    "Unlimited query searches",
+    "Unlimited profile per search",
+    "Custom contact credits",
+    "Email sequences",
+    "AI email writer"
+  ]
+}]

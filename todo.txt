@@ -1,3 +1,8 @@
 
 left bar - show past 7 days sessions/chat 
 llama_index fix
+
+
+atlas mongo cluster for mongodb documents
+fastapi base
+redis cache 
